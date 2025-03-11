@@ -1,0 +1,13 @@
+
+# Unix-style newlines with a newline ending every file
+[*]
+end_of_line = lf
+insert_final_newline = true
+
+[{*.{cpp,h,txt}]
+charset = utf-8
+indent_style = tab
+indent_size = 4
+end_of_line = lf
+insert_final_newline = true
+vc_generate_documentation_comments = doxygen_slash_star
