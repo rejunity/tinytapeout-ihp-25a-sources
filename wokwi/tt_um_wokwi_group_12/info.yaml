@@ -28,6 +28,12 @@ project:
     - "tt_um_wokwi_422965035809389569/wokwi/tt_um_wokwi_422965035809389569.v"
     - "tt_um_wokwi_422968416190311425/wokwi/tt_um_wokwi_422968416190311425.v"
     - "tt_um_wokwi_422968696249282561/wokwi/tt_um_wokwi_422968696249282561.v"
+    - "tt_um_wokwi_407760296956596225/wokwi/tt_um_wokwi_407760296956596225.v"
+    - "tt_um_wokwi_407852791999030273/wokwi/tt_um_wokwi_407852791999030273.v"
+    - "tt_um_wokwi_408118380088342529/wokwi/tt_um_wokwi_408118380088342529.v"
+    - "tt_um_wokwi_408216451206371329/wokwi/tt_um_wokwi_408216451206371329.v"
+    - "tt_um_wokwi_408231820749720577/wokwi/tt_um_wokwi_408231820749720577.v"
+    - "tt_um_wokwi_408237988946759681/wokwi/tt_um_wokwi_408237988946759681.v"
 
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 pinout:
