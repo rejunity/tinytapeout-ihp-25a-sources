@@ -1,4 +1,4 @@
-name: reharden
+name: reharden-wokwi
 
 on:
   push:
