@@ -1,0 +1,58 @@
+---
+project:
+  title: "vslc"
+  author: "James Keener"
+  discord: "jimktrains"
+  description: "A small PLC-like controller"
+  language: "Verilog"
+  # This is to mimic the clock on the icebreaker. It's what I have the
+  # timer and servo values pre-set for; however, those can be changed
+  # if you change the clock frequency, or ignored if you don't use them.
+  clock_hz: 12000000
+
+  # How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x1"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2 or 8x2
+
+  top_module: "tt_um_jimktrains_vslc"
+
+  source_files:
+    - "tt_um_jimktrains_vslc.v"
+    - "tt_um_jimktrains_vslc_core.v"
+    - "tt_um_jimktrains_vslc_eeprom_reader.v"
+    - "tt_um_jimktrains_vslc_executor.v"
+    - "tt_um_jimktrains_vslc_timer.v"
+    - "tt_um_jimktrains_vslc_servo.v"
+
+pinout:
+  # Inputs
+  ui[0]: "Input"
+  ui[1]: "Input"
+  ui[2]: "Input"
+  ui[3]: "Input"
+  ui[4]: "Input"
+  ui[5]: "Input"
+  ui[6]: "Input"
+  ui[7]: "Input"
+
+  # Outputs
+  uo[0]: "Output"
+  uo[1]: "Output"
+  uo[2]: "Output"
+  uo[3]: "Output"
+  uo[4]: "Output"
+  uo[5]: "Output"
+  uo[6]: "Output"
+  uo[7]: "Output"
+
+  # Bidirectional pins
+  uio[0]: "EEPROM /CS"
+  uio[1]: "SPI COPI"
+  uio[2]: "SPI CIPO"
+  uio[3]: "SPI CLK"
+  uio[4]: "Timer Output"
+  uio[5]: "Complementry Timer Output"
+  uio[6]: "Servo Output"
+  uio[7]: "(unused)"
+
+# Do not change!
+yaml_version: 6

@@ -1,0 +1,252 @@
+[
+ {
+  "InstFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/fpga/gowin_vhdl_tang9k/src/simu_tt_top_with_adapterPCB.vhdl",
+  "InstLine" : 5,
+  "InstName" : "top",
+  "ModuleFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/fpga/gowin_vhdl_tang9k/src/simu_tt_top_with_adapterPCB.vhdl",
+  "ModuleLine" : 5,
+  "ModuleName" : "top",
+  "SubInsts" : [
+   {
+    "InstFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/fpga/gowin_vhdl_tang9k/src/simu_tt_top_with_adapterPCB.vhdl",
+    "InstLine" : 45,
+    "InstName" : "PLL_TO_50MHZ",
+    "ModuleFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/fpga/gowin_vhdl_tang9k/src/gowin_rpll/gowin_rpll.vhd",
+    "ModuleLine" : 13,
+    "ModuleName" : "Gowin_rPLL"
+   },
+   {
+    "InstFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/fpga/gowin_vhdl_tang9k/src/simu_tt_top_with_adapterPCB.vhdl",
+    "InstLine" : 64,
+    "InstName" : "TinyTapeout_Test",
+    "ModuleFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/tt_um_gfcwfzkm_scope_bfh_mht1_3.vhdl",
+    "ModuleLine" : 15,
+    "ModuleName" : "tt_um_gfcwfzkm_scope_bfh_mht1_3",
+    "SubInsts" : [
+     {
+      "InstFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/tt_um_gfcwfzkm_scope_bfh_mht1_3.vhdl",
+      "InstLine" : 168,
+      "InstName" : "VIDEOGEN",
+      "ModuleFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/video/video.vhdl",
+      "ModuleLine" : 16,
+      "ModuleName" : "video",
+      "SubInsts" : [
+       {
+        "InstFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/video/video.vhdl",
+        "InstLine" : 110,
+        "InstName" : "Video_Timing_Generator",
+        "ModuleFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/video/vtgen.vhdl",
+        "ModuleLine" : 40,
+        "ModuleName" : "vtgen"
+       },
+       {
+        "InstFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/video/video.vhdl",
+        "InstLine" : 125,
+        "InstName" : "Video_Signal_Merger",
+        "ModuleFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/video/image_generators/merge_generators.vhdl",
+        "ModuleLine" : 17,
+        "ModuleName" : "merge_generators",
+        "SubInsts" : [
+         {
+          "InstFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/video/image_generators/merge_generators.vhdl",
+          "InstLine" : 142,
+          "InstName" : "Grid_Generator",
+          "ModuleFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/video/image_generators/grid_gen.vhdl",
+          "ModuleLine" : 16,
+          "ModuleName" : "Grid_Gen"
+         },
+         {
+          "InstFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/video/image_generators/merge_generators.vhdl",
+          "InstLine" : 150,
+          "InstName" : "Channel_Generator",
+          "ModuleFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/video/image_generators/channel_gen.vhdl",
+          "ModuleLine" : 17,
+          "ModuleName" : "channel_gen"
+         },
+         {
+          "InstFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/video/image_generators/merge_generators.vhdl",
+          "InstLine" : 164,
+          "InstName" : "Trigger_Generator",
+          "ModuleFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/video/image_generators/trigger_gen.vhdl",
+          "ModuleLine" : 17,
+          "ModuleName" : "trigger_gen"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "InstFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/tt_um_gfcwfzkm_scope_bfh_mht1_3.vhdl",
+      "InstLine" : 193,
+      "InstName" : "OSCILLOSCOPE_CONTROL",
+      "ModuleFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/settings/settings.vhdl",
+      "ModuleLine" : 22,
+      "ModuleName" : "settings",
+      "SubInsts" : [
+       {
+        "InstFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/settings/settings.vhdl",
+        "InstLine" : 334,
+        "InstName" : "BUTTON_DEBOUNCER[0].DEBOUNCE_BUTTONS",
+        "ModuleFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/settings/debouncer.vhdl",
+        "ModuleLine" : 19,
+        "ModuleName" : "debouncer"
+       },
+       {
+        "InstFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/settings/settings.vhdl",
+        "InstLine" : 334,
+        "InstName" : "BUTTON_DEBOUNCER[1].DEBOUNCE_BUTTONS",
+        "ModuleFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/settings/debouncer.vhdl",
+        "ModuleLine" : 19,
+        "ModuleName" : "debouncer"
+       },
+       {
+        "InstFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/settings/settings.vhdl",
+        "InstLine" : 334,
+        "InstName" : "BUTTON_DEBOUNCER[2].DEBOUNCE_BUTTONS",
+        "ModuleFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/settings/debouncer.vhdl",
+        "ModuleLine" : 19,
+        "ModuleName" : "debouncer"
+       },
+       {
+        "InstFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/settings/settings.vhdl",
+        "InstLine" : 334,
+        "InstName" : "BUTTON_DEBOUNCER[3].DEBOUNCE_BUTTONS",
+        "ModuleFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/settings/debouncer.vhdl",
+        "ModuleLine" : 19,
+        "ModuleName" : "debouncer"
+       },
+       {
+        "InstFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/settings/settings.vhdl",
+        "InstLine" : 348,
+        "InstName" : "SWITCH_DEBOUNCER[0].DEBOUNCE_SWITCHES",
+        "ModuleFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/settings/debouncer.vhdl",
+        "ModuleLine" : 19,
+        "ModuleName" : "debouncer"
+       },
+       {
+        "InstFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/settings/settings.vhdl",
+        "InstLine" : 348,
+        "InstName" : "SWITCH_DEBOUNCER[1].DEBOUNCE_SWITCHES",
+        "ModuleFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/settings/debouncer.vhdl",
+        "ModuleLine" : 19,
+        "ModuleName" : "debouncer"
+       }
+      ]
+     },
+     {
+      "InstFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/tt_um_gfcwfzkm_scope_bfh_mht1_3.vhdl",
+      "InstLine" : 214,
+      "InstName" : "MEASUREMENTS",
+      "ModuleFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/measurements/measurement_sm.vhdl",
+      "ModuleLine" : 18,
+      "ModuleName" : "measurement_sm",
+      "SubInsts" : [
+       {
+        "InstFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/measurements/measurement_sm.vhdl",
+        "InstLine" : 411,
+        "InstName" : "SAMPLES_STORAGE",
+        "ModuleFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/measurements/samples_memory/fram.vhdl",
+        "ModuleLine" : 19,
+        "ModuleName" : "fram",
+        "SubInsts" : [
+         {
+          "InstFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/measurements/samples_memory/fram.vhdl",
+          "InstLine" : 330,
+          "InstName" : "spi_master_inst",
+          "ModuleFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/measurements/samples_memory/spi_master.vhdl",
+          "ModuleLine" : 19,
+          "ModuleName" : "spi_master"
+         }
+        ]
+       },
+       {
+        "InstFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/measurements/measurement_sm.vhdl",
+        "InstLine" : 433,
+        "InstName" : "SAMPLES_ADC",
+        "ModuleFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/measurements/adc/pmodAD1.vhdl",
+        "ModuleLine" : 18,
+        "ModuleName" : "pmodAD1"
+       },
+       {
+        "InstFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/measurements/measurement_sm.vhdl",
+        "InstLine" : 446,
+        "InstName" : "TRIGGER",
+        "ModuleFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/measurements/trigger_detection.vhdl",
+        "ModuleLine" : 19,
+        "ModuleName" : "trigger_detection"
+       }
+      ]
+     },
+     {
+      "InstFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/tt_um_gfcwfzkm_scope_bfh_mht1_3.vhdl",
+      "InstLine" : 241,
+      "InstName" : "SIGGEN",
+      "ModuleFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/signal_gen/signal_gen.vhdl",
+      "ModuleLine" : 17,
+      "ModuleName" : "signal_gen",
+      "SubInsts" : [
+       {
+        "InstFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/signal_gen/signal_gen.vhdl",
+        "InstLine" : 176,
+        "InstName" : "SINE_GENERATOR",
+        "ModuleFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/signal_gen/waveforms/sine.vhdl",
+        "ModuleLine" : 17,
+        "ModuleName" : "sine"
+       },
+       {
+        "InstFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/signal_gen/signal_gen.vhdl",
+        "InstLine" : 183,
+        "InstName" : "RECTANGLE_GENERATOR",
+        "ModuleFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/signal_gen/waveforms/rectangle.vhdl",
+        "ModuleLine" : 17,
+        "ModuleName" : "rectangle"
+       },
+       {
+        "InstFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/signal_gen/signal_gen.vhdl",
+        "InstLine" : 190,
+        "InstName" : "TRIANGLE_GENERATOR",
+        "ModuleFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/signal_gen/waveforms/triangle.vhdl",
+        "ModuleLine" : 17,
+        "ModuleName" : "triangle"
+       },
+       {
+        "InstFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/signal_gen/signal_gen.vhdl",
+        "InstLine" : 197,
+        "InstName" : "SAWTOOTH_GENERATOR",
+        "ModuleFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/signal_gen/waveforms/sawtooth.vhdl",
+        "ModuleLine" : 17,
+        "ModuleName" : "sawtooth"
+       },
+       {
+        "InstFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/signal_gen/signal_gen.vhdl",
+        "InstLine" : 204,
+        "InstName" : "DAC_PMOD",
+        "ModuleFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/signal_gen/pmodDA2.vhdl",
+        "ModuleLine" : 18,
+        "ModuleName" : "pmodDA2"
+       }
+      ]
+     },
+     {
+      "InstFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/tt_um_gfcwfzkm_scope_bfh_mht1_3.vhdl",
+      "InstLine" : 253,
+      "InstName" : "SETTINGS_UART_PRINTER",
+      "ModuleFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/serial_out/print_settings.vhdl",
+      "ModuleLine" : 16,
+      "ModuleName" : "print_settings",
+      "SubInsts" : [
+       {
+        "InstFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/serial_out/print_settings.vhdl",
+        "InstLine" : 211,
+        "InstName" : "UART_TX_MODULE",
+        "ModuleFile" : "C:/Users/pasca/OneDrive/Schule_BFH/5_Semester/TinyTapeoutProjekt/git/tt09-scope-bfh-mht1_3/src/serial_out/uart_tx.vhdl",
+        "ModuleLine" : 16,
+        "ModuleName" : "uart_tx"
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ }
+]

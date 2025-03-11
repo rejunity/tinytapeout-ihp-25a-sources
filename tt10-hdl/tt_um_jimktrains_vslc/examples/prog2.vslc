@@ -1,0 +1,75 @@
+.define segA o0
+.define segB o1
+.define segC o2
+.define segD o3
+.define segE o4
+.define segF o5
+.define segG o6
+.define segDP o7
+
+.define TIMER_ENABLE s0
+.define TIMER_OUTPUT s1
+.define SERVO_ENABLE s2
+.define SERVO_VAL    s3
+.define SERVO_OUTPUT s4
+.define TIMER_OUTPUT_ENABLE s5
+
+.define t0 s6
+.define t1 s7
+.define t2 s8
+.define t3 s9
+
+RISING i2
+
+DUP
+PUSH t0
+DUP
+ROT
+XOR
+POP t0
+AND
+
+DUP
+PUSH t1
+DUP
+ROT
+XOR
+POP t1
+AND
+
+DUP
+PUSH t2
+DUP
+ROT
+XOR
+POP t2
+AND
+
+DUP
+PUSH t3
+DUP
+ROT
+XOR
+POP t3
+AND
+
+.logic (~t2 & ~t0) | (~t3 & t1) | (~t3 & t2 & t0) | (t3 & ~t2 & ~t1) | (t3 & ~t0) | (t2 & t1)
+POP segA
+
+.logic (~t3 & ~t1 & ~t0) | (~t3 & t1 & t0) | (~t2 & ~t0) | (t3 & ~t1 & t0) | (~t3 & ~t2)
+POP segB
+
+.logic (~t3 & t2) | (t3 & ~t2) | (~t1 & t0) | (~t2 & ~t1) | (~t2 & t0)
+POP segC
+
+.logic (t2 & ~t1 & t0) | (~t3 & ~t2 & ~t0) | (~t2 & t1 & t0) | (t3 & ~t1) | (t2 & t1 & ~t0)
+POP segD
+
+.logic (~t2 & ~t0) | (t1 & ~t0) | (t3 & t1) | (t3 & t2)
+POP segE
+
+.logic (~t1 & ~t0) | (~t3 & t2 & ~t1) | (t2 & ~t0) | (t3 & ~t2) | (t3 & t1)
+POP segF
+
+.logic (~t2 & t1) | (t3 & ~t2) | (~t3 & t2 & ~t1) | (t1 & ~t0) | (t3 & t0)
+pop segG

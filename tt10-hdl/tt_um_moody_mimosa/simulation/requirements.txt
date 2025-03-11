@@ -1,0 +1,5 @@
+pyverilator-mm==0.7.6
+pyqt6
+pyqt6-tools
+numpy
+matplotlib

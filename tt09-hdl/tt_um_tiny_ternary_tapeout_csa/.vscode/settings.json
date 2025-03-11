@@ -1,0 +1,6 @@
+{
+  "verilog.linting.linter": "verilator",
+  "verilog.formatting.verilogHDL.formatter": "verible-verilog-format",
+  "editor.tabSize": 2,
+  "files.autoSave": "afterDelay"
+}

@@ -1,0 +1,24 @@
+# Pin Mapping for iceblink40lp1k board
+
+# Input Pins (ui_in)
+set_io ui_in[0] A32
+set_io ui_in[1] B23
+set_io ui_in[2] B15
+set_io ui_in[3] B14
+set_io ui_in[4] B12
+set_io ui_in[5] B10
+set_io ui_in[6] A12
+set_io ui_in[7] A13
+
+# Output Pins (uo_out)
+#set_io uo_out[0] A13
+#set_io uo_out[1] A12
+#set_io uo_out[2] B4
+#set_io uo_out[3] B3
+#set_io uo_out[4] A3
+#set_io uo_out[5] A2
+#set_io uo_out[6] A1
+set_io uo_out[7] A25
+
+set_io clk    A9
+set_io rst_n  B22

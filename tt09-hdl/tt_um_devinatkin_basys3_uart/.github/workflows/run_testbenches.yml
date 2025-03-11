@@ -1,0 +1,46 @@
+name: Run Testbenches
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        testbench: 
+          - tb_pwm
+          - tb_circular_shift_register
+          - tb_uart
+          - tb_uart_sr
+          - tb_uart_fifo
+          - tb_input_value_check
+          - tb_output_value_check
+          - tb_led_cycle
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup environment
+      run: |
+        sudo apt-get update
+
+    - name: Install Icarus Verilog
+      run: |
+        sudo apt-get install -y iverilog
+
+    - name: Run testbench
+      run: |
+        cd tb
+        make ${{ matrix.testbench }} &
+        wait
+
+    - name: Cleanup
+      run: |
+        cd tb
+        make clean

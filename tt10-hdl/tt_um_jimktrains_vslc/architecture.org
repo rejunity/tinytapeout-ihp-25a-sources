@@ -1,0 +1,112 @@
+* General Description
+
+- Stack machine
+  - Code executes until a cycle start happens or the end of code memory is
+    reached, in which case a new cycle is started
+- 8 input bits/registers mapped to pins
+- 8 output bits/registers mapped to pins
+- 16 bit data stack
+- 1 10-bit timer/counter with clock divisor
+
+* Opcodes
+
+  ** Implemented
+
+Bit 7,6:
+      00: Register
+      01: Special Function Register (SFR)
+      10: Truth Table
+      11: Other
+Bit 5,4:
+    Register:
+      00 Push
+      01 Pop
+      10 Set
+      11 Reset
+    Truth Table: 2s complement shift amount
+
+
+#+BEGIN_SRC
+PUSH reg    0000 IRRR
+POP  reg    0001 1RRR
+SET  reg    0010 1RRR
+RESET reg   0011 1RRR
+PUSH sfr    0100 RRRR
+POP sfr     0101 RRRR
+SET sfr     0110 RRRR
+RESET sfr   0111 RRRR
+
+AND         1010 0001
+NAND        1010 1110
+OR          1010 0111
+NOR         1010 1000
+XOR         1010 0110
+BICOND      1010 1001
+IMPL        1010 1101
+NIMPL       1010 0010
+CONV        1010 1011
+NCONV       1010 0100
+
+DUP         1000 1100
+OVER        1000 1010
+DROP        1010 1010
+ZERO        1011 0000
+ONE         1011 1111
+NOT         1001 0011
+OVERNOT     1010 0101
+
+RISING  reg 1100 IRRR XXXX XXXX XXXX XXXX
+FALLING reg 1101 IRRR XXXX XXXX XXXX XXXX
+
+SPARAM0 parm 1110 0PPP
+SPARAM1 parm 1110 1PPP
+
+CLR         1111 0000
+SETALL      1111 0001
+SWAP        1111 0010
+ROT         1111 0011
+NOP         1111 1111
+
+#+END_SRC
+** SFR
+   - 0x0 Timer Enable
+   - 0x1 Timer Output
+   - 0x2 Servo Enable (always outputs to pin o7)
+   - 0x3 Servo Value
+   - 0x4 Servo Output
+   - 0x5 Timer Output Enable (Pin o6)
+
+** Parameter
+   - 0x0 SPI Clock Divider (Updating Not Implemented)
+   - 0x1 Timer0 Clock Divider
+   - 0x2 Timer0 Counter A
+   - 0x3 Timer0 Counter B
+   - 0x4 Servo0 Clock Divider
+   - 0x5 Servo0 Frequency Value
+   - 0x6 Servo0 Reset Value
+   - 0x7 Servo0 Set Value
+
+* Interface
+** KeyPad
+
+#+BEGIN_SRC
+Type               PUSH       POP        SET         RESET
+Reg                IN 0/TIM0  IN 1       IN 2        IN 3
+SR1/SR2/S0         ZERO       AND        NIMPL       NOT
+OTHER              CLR        SETALL     SWAP        ROT
+
+Type
+Reg                IN 4       IN 5       IN 6        IN 7
+SR1/SR2/S0
+OTHER              NCONV      OVERNOT    XOR         OR
+
+Type                          SR1        SR2         S0
+Reg                OUT 0      OUT 1      OUT 2       OUT 3
+SR1/SR2/S0         NOR        BICOND     DROP/OVER
+OTHER
+
+Type               Rising     Falling                OTHER
+Reg                OUT 4      OUT 5      OUT 6       OUT 7
+SR1/SR2/S0         DUP        IMPL       NAND        ONE
+OTHER                                                NOP
+#+END_SRC

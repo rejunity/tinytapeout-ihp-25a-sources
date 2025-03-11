@@ -1,0 +1,6 @@
+digraph vslc_fetch_cycle{
+  reset -> set_address_zero;
+  set_address_zero -> cs_eeprom_high;
+  cs_eeprom_high -> cs_eeprom;
+  cs_eeprom -> 
+}

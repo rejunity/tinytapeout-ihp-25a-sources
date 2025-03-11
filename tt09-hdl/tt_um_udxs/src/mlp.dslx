@@ -1,0 +1,11 @@
+%%dslx --top=mlp --pipeline_stages=1 --flop_inputs=true --flop_outputs=false
+
+import std;
+
+fn mlp(i: s4, w: s4, t: u16) -> (s16, s16) {
+  let prod:s8 = std::smul(i, w);
+  let total:s16 = std::sadd(t as s15, prod);
+  let relu:s16 = if(total > s16:0) {total} else {s16:0};
+
+  (total, relu)
+}

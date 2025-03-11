@@ -1,0 +1,28 @@
+name: test
+on: [push, workflow_dispatch]
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install iverilog
+        shell: bash
+        run: sudo apt-get update && sudo apt-get install -y iverilog
+
+      - name: Run tests
+        run: |
+          cd test
+          make clean
+          make
+
+      - name: upload vcd
+        if: success() || failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-vcd
+          path: |
+            test/tb.vcd

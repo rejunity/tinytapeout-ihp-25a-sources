@@ -1,0 +1,25 @@
+[
+  {
+    "class":"firrtl.EmitCircuitAnnotation",
+    "emitter":"firrtl.VerilogEmitter"
+  },
+  {
+    "class":"chisel3.experimental.EnumAnnotations$EnumDefAnnotation",
+    "typeName":"tappu.WrMode",
+    "definition":{
+      "none":0,
+      "plus":1,
+      "minus":2,
+      "set":3
+    }
+  },
+  {
+    "class":"chisel3.experimental.EnumAnnotations$EnumComponentAnnotation",
+    "target":"ChiselTop.TapeVecMemory.io_wrMode",
+    "enumTypeName":"tappu.WrMode"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxTargetDirAnno",
+    "targetDir":"src"
+  }
+]

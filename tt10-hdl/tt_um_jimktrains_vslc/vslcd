@@ -1,0 +1,111 @@
+#!/usr/bin/env python3
+
+import argparse
+import sys
+import os.path
+import struct
+
+parser = argparse.ArgumentParser(
+                    prog='vslcd',
+                    description='VSLC Disassembler',
+                    epilog='')
+
+parser.add_argument('filename')
+
+args = parser.parse_args()
+
+
+binoutfile = os.path.splitext(args.filename)[0] + ".eeprom.bin"
+asmoutfile = os.path.splitext(args.filename)[0] + ".final.vslc"
+
+SHIFT_0     = 0b00000000
+SHIFT_L1    = 0b00110000
+SHIFT_R1    = 0b00010000
+
+INSTR_LOGIC = 0b10000000
+
+instr_opcode = {
+"PUSH": 0x00,
+"POP": 0x10,
+"SET": 0x20,
+"RESET": 0x30,
+"NOP": 0xff,
+"CLR": 0xf0,
+"SETALL": 0xf1,
+"RISING": 0b11000000,
+"FALLING": 0b11010000,
+"SWAP": 0b11110010,
+"ROT": 0b11110011,
+
+"AND"     : INSTR_LOGIC + SHIFT_R1 + 0b0001,
+"NIMPL"   : INSTR_LOGIC + SHIFT_R1 + 0b0010,
+"NCONV"   : INSTR_LOGIC + SHIFT_R1 + 0b0100,
+"DROP"    : INSTR_LOGIC + SHIFT_R1 + 0b0101,
+"XOR"     : INSTR_LOGIC + SHIFT_R1 + 0b0110,
+"OR"      : INSTR_LOGIC + SHIFT_R1 + 0b0111,
+"NOR"     : INSTR_LOGIC + SHIFT_R1 + 0b1000,
+"BICOND"  : INSTR_LOGIC + SHIFT_R1 + 0b1001,
+"NOT"     : INSTR_LOGIC + SHIFT_0  + 0b1010,
+"OVERNOT" : INSTR_LOGIC + SHIFT_R1 + 0b1010,
+"CONV"    : INSTR_LOGIC + SHIFT_R1 + 0b1011,
+"IMPL"    : INSTR_LOGIC + SHIFT_R1 + 0b1101,
+"NAND"    : INSTR_LOGIC + SHIFT_R1 + 0b1110,
+
+"DUP"     : INSTR_LOGIC + SHIFT_L1 + 0b0101,
+"OVER"    : INSTR_LOGIC + SHIFT_L1 + 0b0011,
+"ZERO"    : INSTR_LOGIC + SHIFT_L1 + 0b0000,
+"ONE"     : INSTR_LOGIC + SHIFT_L1 + 0b1111,
+}
+
+
+# barf. Just trying to keep the above common
+opcodes = [(k,v) for (k,v) in instr_opcode.items()]
+opcodes.sort(key=lambda x: x[1])
+
+with open(args.filename, 'rb') as f:
+    start_addr = struct.unpack('>h', f.read(2))[0]
+    end_addr = struct.unpack('>h', f.read(2))[0]
+
+    if start_addr != 4:
+        print(f".start {start_addr}")
+
+    last_non_noop = 3
+    cur_addr = 3
+    while b := f.read(1):
+        cur_addr += 1
+        best_opcode = None
+        b = b[0]
+        for o in opcodes:
+            if o[1] <= b:
+                best_opcode = o
+            else:
+                break
+        if best_opcode is None:
+            print(f"No match for {b:02x}")
+        else:
+            if best_opcode[0] != "NOP":
+                if last_non_noop + 1 != cur_addr:
+                    print(f"....{cur_addr - last_non_noop} NOPs ....")
+                last_non_noop = cur_addr
+                reg = ""
+                if best_opcode[1] < 0x80 or (best_opcode[1] & 0xe0 == 0xc0):
+
+                    if b & 0xc0 == 0x40:
+                        for o in opcodes:
+                            if o[1] <= (b & (0xff - 0x40)):
+                                best_opcode = (o[0], o[1] + 0x40)
+                            else:
+                                break
+
+                    regv = b-best_opcode[1]
+                    regp = "i"
+                    if best_opcode[1] & 0xc0 == 0x40:
+                        regp = "s"
+                    elif regv > 7:
+                        regv -= 7
+                        regp = "o"
+                    reg = regp + str(regv)
+                print(f"{best_opcode[0]} {reg}")
+    if end_addr != last_non_noop:
+        print(f".end {end_addr}")
+

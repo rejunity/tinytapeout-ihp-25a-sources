@@ -1,0 +1,10 @@
+node_modules
+.nyc_output
+coverage
+npm-debug.log
+package-lock.json
+build
+wavedrom.js
+wavedrom.min.js
+wavedrom.unpkg.js
+wavedrom.unpkg.min.js

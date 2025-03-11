@@ -1,0 +1,205 @@
+#!/usr/bin/env python3
+
+import argparse
+import sys
+import os.path
+import struct
+
+bytecode = []
+
+
+
+parser = argparse.ArgumentParser(
+                    prog='vslcc',
+                    description='VSLC Compiler',
+                    epilog='')
+
+parser.add_argument('filename')
+
+args = parser.parse_args()
+
+
+binoutfile = os.path.splitext(args.filename)[0] + ".eeprom.bin"
+asmoutfile = os.path.splitext(args.filename)[0] + ".final.vslc"
+
+SHIFT_0     = 0b00000000
+SHIFT_L1    = 0b00110000
+SHIFT_R1    = 0b00010000
+
+INSTR_LOGIC = 0b10000000
+
+instr_opcode = {
+"PUSH": 0x00,
+"POP": 0x10,
+"SET": 0x20,
+"RESET": 0x30,
+"NOP": 0xff,
+"CLR": 0xf0,
+"SETALL": 0xf1,
+"RISING": 0b11000000,
+"FALLING": 0b11010000,
+"SWAP": 0b11110010,
+"ROT": 0b11110011,
+
+"AND"     : INSTR_LOGIC + SHIFT_R1 + 0b0001,
+"NIMPL"   : INSTR_LOGIC + SHIFT_R1 + 0b0010,
+"NCONV"   : INSTR_LOGIC + SHIFT_R1 + 0b0100,
+"DROP"    : INSTR_LOGIC + SHIFT_R1 + 0b0101,
+"XOR"     : INSTR_LOGIC + SHIFT_R1 + 0b0110,
+"OR"      : INSTR_LOGIC + SHIFT_R1 + 0b0111,
+"NOR"     : INSTR_LOGIC + SHIFT_R1 + 0b1000,
+"BICOND"  : INSTR_LOGIC + SHIFT_R1 + 0b1001,
+"NOT"     : INSTR_LOGIC + SHIFT_0  + 0b1010,
+"OVERNOT" : INSTR_LOGIC + SHIFT_R1 + 0b1010,
+"CONV"    : INSTR_LOGIC + SHIFT_R1 + 0b1011,
+"IMPL"    : INSTR_LOGIC + SHIFT_R1 + 0b1101,
+"NAND"    : INSTR_LOGIC + SHIFT_R1 + 0b1110,
+
+"DUP"     : INSTR_LOGIC + SHIFT_L1 + 0b0101,
+"OVER"    : INSTR_LOGIC + SHIFT_L1 + 0b1010,
+"ZERO"    : INSTR_LOGIC + SHIFT_L1 + 0b0000,
+"ONE"     : INSTR_LOGIC + SHIFT_L1 + 0b1111,
+}
+
+defines = {}
+
+cur_addr = 0
+line_num = 0
+final = []
+
+# Mostly just a very basic shunting yard algorithm
+def compile_logic(line, line_num):
+    line = ' '.join(line)
+    stack = []
+    opstack = []
+    ops = "(&|~"
+    op_opcode = {
+        "|":"OR",
+        "&":"AND",
+        "^":"XOR",
+        "~":"NOT",
+        "(":"",
+    }
+    regname = ""
+    for i in list(line):
+        if len(i.strip()) == 0:
+            continue
+        if i in ops or i in "()":
+            if len(regname) != 0:
+                stack.append(f"PUSH {regname}")
+            regname = ""
+
+            if i == ")":
+                invalid = True
+                while len(opstack) != 0:
+                    x = opstack.pop()
+                    if x == '(':
+                        invalid = False
+                        break
+                    stack.append(op_opcode[x])
+                    
+
+                if invalid:
+                    print(f"L{line_num} mismatch parens. invalid syntax", file=sys.stderr)
+                    sys.exit(5)
+            else:
+                if i != "(" and len(opstack) != 0 and ops.find(opstack[-1]) > ops.find(i):
+                    stack.append(op_opcode[opstack.pop()])
+                opstack.append(i)
+        else:
+            regname += i
+
+    if len(regname) != 0:
+        stack.append(f"PUSH {regname}")
+
+    while len(opstack) != 0:
+        stack.append(op_opcode[opstack.pop()])
+
+    return [i for i in stack if len(i) != 0]
+
+def process_line(line, line_num):
+    line = line.strip()
+    if len(line) == 0:
+        return [[],[]]
+    if line.startswith(';'):
+        return [[],[]]
+    line = line.upper()
+    line = [i for i in line.split(' ') if len(i) > 0]
+
+    if line[0] == '.DEFINE':
+        if len(line) < 3:
+            printf(f"L{line_num} .define must have 2 params", file=sys.stderr)
+            sys.exit(3)
+        defines[line[1]] = line[2]
+        return [[],[]]
+    elif line[0] == '.LOGIC':
+        output = compile_logic(line[1:], line_num)
+        ret = [[],[]]
+        for (b,o) in [process_line(i, line_num) for i in output]:
+            ret[0].extend(b)
+            ret[1].extend(o)
+        return ret
+    else:
+        opcode = 0xff
+        reg = 0
+        if line[0] not in instr_opcode:
+            print(f"L{line_num} {line} not found as an opcode", file=sys.stderr)
+            sys.exit(1)
+        opcode = instr_opcode[line[0]] 
+        if len(line) > 1 and not line[1].startswith(';'):
+            if line[1] in defines:
+                line[1] = defines[line[1]]
+
+            if line[1].startswith('S'):
+                reg = 0x40 + int(line[1][1], 16)
+            elif line[1].startswith('I'):
+                reg = int(line[1][1])
+            elif line[1].startswith('O'):
+                reg = 8 + int(line[1][1])
+            else:
+                print(f"L{line_num} {line[1]} is an unknown register", file=sys.stderr)
+                sys.exit(2)
+
+        return [[opcode + reg], [" ".join(line)]]
+
+
+with open(args.filename, 'r') as f:
+    for line in f:
+        line_num += 1
+        line = line.strip()
+        (bcs, ocs) = process_line(line, line_num)
+        cur_addr = len(bytecode)
+        bytecode.extend(bcs)
+        if line != "".join(ocs):
+            final.append(f"; L{line_num} {line}")
+        final.extend(ocs)
+        print(f"{line_num=} {line=}")
+        for i in range(len(bcs)):
+            print(f"  {cur_addr=:02x} =>", end=" ")
+            print(f"{ocs[i]} =>", end=" ")
+            print(f"{bcs[i]:02x}({bcs[i]:08b})")
+            cur_addr += 1
+
+bytecode = ([0xff] * 4) + bytecode
+cur_addr = len(bytecode)
+print(f"{cur_addr=}")
+
+start_addr = struct.pack('>h', 4)
+bytecode[0] = start_addr[0]
+bytecode[1] = start_addr[1]
+
+end_addr = struct.pack('>h', cur_addr - 1)
+bytecode[2] = end_addr[0]
+bytecode[3] = end_addr[1]
+
+print(f"{start_addr=} {end_addr=}")
+
+bytecode.extend([0xff] * (1024 - len(bytecode)))
+
+with open(binoutfile, "wb") as f:
+    f.write(bytes(bytecode))
+
+with open(asmoutfile, "wb") as f:
+    for i in final:
+        f.write(i.encode('ascii'))
+        f.write(b"\n")

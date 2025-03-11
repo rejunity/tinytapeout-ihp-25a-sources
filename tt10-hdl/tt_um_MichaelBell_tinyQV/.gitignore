@@ -1,0 +1,17 @@
+.DS_Store
+.idea
+.vscode
+*.vcd
+runs
+src/user_config.json
+src/config_merged.json
+test/sim_build
+test/__pycache__/
+test/*results.xml
+test/gate_level_netlist.v
+*.swp
+*.asc
+*.bin
+*.log
+*.uf2
+gds_render_preview*

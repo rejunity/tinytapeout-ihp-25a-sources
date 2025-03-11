@@ -1,0 +1,9 @@
+generate_lfsr
+lfsr
+*.dwarf
+*.out
+*.vcd
+*.log
+RELEASE
+TEST_LFSR
+TEST_LOGIC
