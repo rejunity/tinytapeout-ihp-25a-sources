@@ -17,7 +17,7 @@
 
   "//": "CLOCK_PERIOD - Increase this in case you are getting setup time violations.",
   "//": "The value is in nanoseconds, so 20ns == 50MHz.",
-  "CLOCK_PERIOD": 20,
+  "CLOCK_PERIOD": 12.5,
 
   "//": "Hold slack margin - Increase them in case you are getting hold violations.",
   "PL_RESIZER_HOLD_SLACK_MARGIN": 0.1,
@@ -27,9 +27,27 @@
   "RUN_LINTER": 1,
   "LINTER_INCLUDE_PDK_MODELS": 1,
 
+  "//": "Synth strategy",
+  "SYNTH_STRATEGY": "AREA 0",
+
+  "//": "Clock gating",
+  "USE_LIGHTER": 0,
+
+  "//": "SDC Customizations",
+  "FALLBACK_SDC_FILE": "dir::base.sdc",
+
+  "//": "Routing tweaks",
+  "DESIGN_REPAIR_MAX_SLEW_PCT": 25,
+  "DESIGN_REPAIR_REMOVE_BUFFERS": 1,
+  "//RUN_HEURISTIC_DIODE_INSERTION": 1,
+  "//RUN_ANTENNA_REPAIR": 1,
+  "//HEURISTIC_ANTENNA_THRESHOLD": 200,
+
   "//": "If you need a custom clock configuration, read the following documentation first:",
   "//": "https://tinytapeout.com/faq/#how-can-i-map-an-additional-external-clock-to-one-of-the-gpios",
   "CLOCK_PORT": "clk",
+
+  "CTS_ROOT_BUFFER": "sg13g2_buf_8",
 
   "//": "Configuration docs: https://openlane.readthedocs.io/en/latest/reference/configuration.html",
 
@@ -66,7 +84,7 @@
   "//": "Clock",
   "RUN_CTS": 1,
 
-  "//": "Don't use power rings or TopMetal layers",
+  "//": "Don't use power rings or met5 layer",
   "FP_PDN_MULTILAYER": 0,
   "RT_MAX_LAYER": "Metal5",
 

@@ -35,7 +35,6 @@ project:
     - "tinyQV/peri/spi/spi.v"
     - "tinyQV/peri/pwm/pwm.v"
     - "tinyQV/peri/ttgame/ttgame.v"
-    - "sky130_polyfill.v"
 
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 pinout:
