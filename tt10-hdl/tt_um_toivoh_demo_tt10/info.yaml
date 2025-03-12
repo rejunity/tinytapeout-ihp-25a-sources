@@ -1,6 +1,6 @@
 # Tiny Tapeout project information
 project:
-  title:        "Orion Iron Ion [TT08 demo competition]"      # Project title
+  title:        "Orion Iron Ion [TT10 demo competition]"      # Project title
   author:       "Toivo Henningsson"      # Your name
   discord:      "possible_realities"      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
   description:  "My contribution to the TT10 demo competition"      # One line description of what your project does
