@@ -1,0 +1,60 @@
+* NGSPICE file created from ibias_10nA.ext - technology: sky130A
+
+.subckt ibias_10nA Vdd Vss Vnbias Vpbias
+X0 a_272_n1534# Vpbias.t3 Vdd.t0 w_108_n1634# sky130_fd_pr__pfet_01v8 ad=0.29 pd=2.58 as=0.29 ps=2.58 w=1 l=0.35
+X1 Vss.t0 a_272_n1534# a_532_n1524# VSUBS sky130_fd_pr__nfet_01v8 ad=0.29 pd=2.58 as=0.17183 ps=1.605 w=1 l=1
+X2 a_532_n1524# Vnbias.t3 Vpbias.t2 VSUBS sky130_fd_pr__nfet_01v8 ad=0.25775 pd=2.41 as=0.145 ps=1.58 w=0.5 l=0.2
+X3 a_532_n1524# a_272_n1534# a_272_n1534# VSUBS sky130_fd_pr__nfet_01v8 ad=0.17183 pd=1.605 as=0.29 ps=2.58 w=1 l=0.2
+X4 Vnbias.t0 Vpbias.t4 Vdd.t2 w_108_n1634# sky130_fd_pr__pfet_01v8 ad=0.145 pd=1.58 as=0.145 ps=1.58 w=0.5 l=0.35
+X5 Vpbias.t1 Vpbias.t0 Vdd.t1 w_108_n1634# sky130_fd_pr__pfet_01v8 ad=0.145 pd=1.58 as=0.145 ps=1.58 w=0.5 l=0.35
+X6 Vss.t1 Vnbias.t1 Vnbias.t2 VSUBS sky130_fd_pr__nfet_01v8 ad=0.145 pd=1.58 as=0.145 ps=1.58 w=0.5 l=0.2
+R0 Vpbias.n0 Vpbias.t1 651.442
+R1 Vpbias Vpbias.t3 274.702
+R2 Vpbias.n0 Vpbias.t2 229.541
+R3 Vpbias.n1 Vpbias.n0 161.585
+R4 Vpbias.t3 Vpbias.n1 112.927
+R5 Vpbias.t0 Vpbias.t4 106.04
+R6 Vpbias.n1 Vpbias.t0 78.4976
+R7 Vdd.n0 Vdd.t2 651.822
+R8 Vdd.n0 Vdd.t1 651.431
+R9 Vdd.n0 Vdd.t0 229.096
+R10 Vdd Vdd.n0 0.30213
+R11 Vss.n0 Vss.t1 229.345
+R12 Vss.n0 Vss.t0 86.2735
+R13 Vss Vss.n0 1.86752
+R14 Vnbias.n0 Vnbias.t0 651.864
+R15 Vnbias.n0 Vnbias.t2 229.145
+R16 Vnbias.n2 Vnbias.n1 161.3
+R17 Vnbias.n1 Vnbias.t3 115.68
+R18 Vnbias.n1 Vnbias.t1 110.861
+R19 Vnbias Vnbias.n2 0.391066
+R20 Vnbias.n2 Vnbias.n0 0.219135
+C0 Vpbias Vss 0.02552f
+C1 a_272_n1534# Vdd 0.11511f
+C2 Vpbias a_532_n1524# 0.07515f
+C3 Vdd w_108_n1634# 0.03724f
+C4 a_272_n1534# Vss 0.07355f
+C5 Vss w_108_n1634# 0.01492f
+C6 a_272_n1534# a_532_n1524# 0.01779f
+C7 Vdd Vnbias 0.06494f
+C8 a_272_n1534# Vpbias 0.11032f
+C9 Vss Vnbias 0.37229f
+C10 Vpbias w_108_n1634# 0.1834f
+C11 a_532_n1524# Vnbias 0.08914f
+C12 Vpbias Vnbias 0.11874f
+C13 a_272_n1534# w_108_n1634# 0.02561f
+C14 a_272_n1534# Vnbias 0.06798f
+C15 w_108_n1634# Vnbias 0.02584f
+C16 Vss Vdd 0.14414f
+C17 a_532_n1524# Vdd 0
+C18 Vpbias Vdd 0.27886f
+C19 Vss a_532_n1524# 0.01192f
+C20 Vss VSUBS 0.58242f
+C21 Vdd VSUBS 0.21986f
+C22 Vpbias VSUBS 0.46435f
+C23 Vnbias VSUBS 0.2999f
+C24 a_272_n1534# VSUBS 0.69115f
+C25 a_532_n1524# VSUBS 0.03061f
+C26 w_108_n1634# VSUBS 0.57586f
+.ends
+

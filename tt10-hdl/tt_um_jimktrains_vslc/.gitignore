@@ -1,8 +1,8 @@
 src/obj_dir
 src/_tt_fpga_top.v
 build
-*.png
-*.svg
+gds*.png
+gds*.svg
 src/config.json
 .DS_Store
 .idea

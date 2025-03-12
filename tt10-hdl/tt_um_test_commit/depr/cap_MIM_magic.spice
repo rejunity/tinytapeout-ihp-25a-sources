@@ -1,0 +1,6 @@
+** sch_path: /foss/designs/tt10-uR-IPs/xschem/T0/cap_MIM_magic.sch
+.subckt cap_MIM_magic
+
+XC1 net1 net2 sky130_fd_pr__cap_mim_m3_1 W=1 L=1 m=1
+.ends
+.end

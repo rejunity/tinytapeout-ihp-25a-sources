@@ -1,0 +1,5 @@
+PUSH i0
+DUP
+POP o0
+NOT
+PUSH o1

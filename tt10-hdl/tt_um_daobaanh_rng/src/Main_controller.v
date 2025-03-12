@@ -51,7 +51,7 @@ module Main_controller(
 	
 	reg [31:0] tmp_reg = 32'd0;
 		
-	reg [4:0] cnt_bytes = 3'd0;
+	reg [2:0] cnt_bytes = 3'd0;
 	reg [10:0] cnt_delay = 11'd0;
 
 	
@@ -102,10 +102,11 @@ module Main_controller(
 					cnt_delay <= cnt_delay + 1;
 				end else begin		
 					cnt_delay <= 0;
-					tmp_reg <= data;																						
+					tmp_reg <= data;
+					state <= s_TX_start;																					
 				end
 
-				state <= s_TX_start;						
+										
 			end
 			
 		//----------------------- s_TX_start

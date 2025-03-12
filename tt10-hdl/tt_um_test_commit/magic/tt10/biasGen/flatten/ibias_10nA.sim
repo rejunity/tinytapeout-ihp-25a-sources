@@ -1,0 +1,15 @@
+| units: 500000 tech: sky130A format: MIT
+x Vpbias Vdd a_272_n1534# w_108_n1634# s=11600,516 d=11600,516 l=70 w=200 x=202 y=-1533 sky130_fd_pr__pfet_01v8
+x a_272_n1534# a_532_n1524# Vss VSUBS s=6873,321 d=11600,516 l=200 w=200 x=592 y=-1523 sky130_fd_pr__nfet_01v8
+x Vnbias Vpbias a_532_n1524# VSUBS s=5800,316 d=10310,482 l=40 w=100 x=492 y=-1229 sky130_fd_pr__nfet_01v8
+x a_272_n1534# a_272_n1534# a_532_n1524# VSUBS s=11600,516 d=6873,321 l=40 w=200 x=492 y=-1523 sky130_fd_pr__nfet_01v8
+x Vpbias Vdd Vnbias w_108_n1634# s=5800,316 d=5800,316 l=70 w=100 x=202 y=-1051 sky130_fd_pr__pfet_01v8
+x Vpbias Vdd Vpbias w_108_n1634# s=5800,316 d=5800,316 l=70 w=100 x=202 y=-1205 sky130_fd_pr__pfet_01v8
+x Vnbias Vnbias Vss VSUBS s=5800,316 d=5800,316 l=40 w=100 x=492 y=-1015 sky130_fd_pr__nfet_01v8
+R Vss 1092
+R Vdd 2609
+R Vpbias 1264
+R Vnbias 1167
+R a_272_n1534# 1725
+R a_532_n1524# 1140
+R w_108_n1634# 2740

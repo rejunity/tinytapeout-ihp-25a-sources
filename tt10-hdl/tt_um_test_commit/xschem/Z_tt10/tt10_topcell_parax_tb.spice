@@ -1,0 +1,67 @@
+** sch_path: /foss/designs/tt10-uR-IPs/xschem/tt10_topcell_parax_tb.sch
+**.subckt tt10_topcell_parax_tb
+VIN1 net2 0 0 pulse 0 1.8 100u 1u 1u 1 2 ac 1 0
+vi_total net1 Vjump 0
+.save i(vi_total)
+R2 net1 net2 30 m=1
+C1 V_osc_out 0 1f m=1
+vi_vdpwr Vjump net3 0
+.save i(vi_vdpwr)
+vi_vgnd net4 0 0
+.save i(vi_vgnd)
+x1 net4 net4 net4 net6 net5 net7 net8 net9 net10 net11 net12 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
++ 0 0 0 0 0 net3 net4 tt10_topcell
+C2 V_osc_s1 0 1f m=1
+vi_osc_out net6 V_osc_out 0
+.save i(vi_osc_out)
+vi_osc_s1 net5 V_osc_s1 0
+.save i(vi_osc_s1)
+**** begin user architecture code
+
+
+
+.temp 30
+.param Vdd = 1.8
+.param imax = 100e-9
+
+
+.option savecurrents
+.save all
+.control
+  save all alli
+  save
+
+  op
+  write osc_51k5Hz_tb.raw
+  remzerovec
+  set appendwrite
+
+  tran 0.1u 1.5m
+  remzerovec
+  write osc_51k5Hz_tb.raw
+
+
+
+
+
+  *quit 0
+
+
+
+
+.endc
+
+
+
+
+** opencircuitdesign pdks install
+.lib /foss/pdks/sky130A/libs.tech/combined/sky130.lib.spice tt
+
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  Z_tt10/tt10_topcell.sym # of pins=53
+** sym_path: /foss/designs/tt10-uR-IPs/xschem/Z_tt10/tt10_topcell.sym
+.include Z_tt10/tt10_topcell_flat.spice
+.end

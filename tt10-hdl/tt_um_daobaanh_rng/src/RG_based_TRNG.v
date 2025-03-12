@@ -22,7 +22,7 @@
 (* dont_touch = "yes"*)
 module RG_based_TRNG#
 	(
-		parameter NO_INVs = 5      // Degree polynominal		
+		parameter NO_INVs = 11      // Degree polynominal		
 	)(
 		
 		input i_clk,
@@ -42,7 +42,7 @@ module RG_based_TRNG#
 		.o_w(w));
 	
 	// ring_generator part
-	ring_generator #(NO_INVs) RG_part(
+	ring_generator RG_part(
 		.i_clk(i_clk), 
 		.i_rst(i_rst), 
 		.i_w(w), 
@@ -50,6 +50,6 @@ module RG_based_TRNG#
 		.o_data(o_data));	
 	
 	/* output */
-	assign o_RO = w[NO_INVs-1];
+	assign o_RO = w[0];
 	assign o_RG = o_RNG;
 endmodule

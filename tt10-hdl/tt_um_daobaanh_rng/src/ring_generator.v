@@ -20,13 +20,10 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 (* keep_hierarchy *)
-module ring_generator#
-	(
-		parameter NO_INVs = 5      // No of inverter stage
-	)(
+module ring_generator(
 		input i_clk,
 		input i_rst,
-		input [NO_INVs-1:0] i_w,
+		input [10:0] i_w,
 		output o_pulse,
 		output [31:0] o_data
 	);
@@ -42,21 +39,21 @@ module ring_generator#
 	endgenerate
    
    // top part of RG
-	assign i_r[0]	= o_r[1];
+	assign i_r[0]	= o_r[1] ^ i_w[0];
 	assign i_r[1]	= o_r[2];
-	assign i_r[2]	= o_r[3] ^ i_w[0];
+	assign i_r[2]	= o_r[3] ^ i_w[1];
 	assign i_r[3]	= o_r[4];
-	assign i_r[4]	= o_r[5];
-	assign i_r[5]	= o_r[6] ^ i_w[1];
-	assign i_r[6]	= o_r[7];
+	assign i_r[4]	= o_r[5] ^ i_w[2];
+	assign i_r[5]	= o_r[6];
+	assign i_r[6]	= o_r[7] ^ i_w[3];
 	assign i_r[7]	= o_r[8];
-	assign i_r[8]	= o_r[9] ^ i_w[2];
+	assign i_r[8]	= o_r[9] ^ i_w[4];
 	assign i_r[9]	= o_r[10];
-	assign i_r[10]	= o_r[11];
-	assign i_r[11] = o_r[12] ^ i_w[3];
-	assign i_r[12] = o_r[13];
+	assign i_r[10]	= o_r[11] ^ i_w[5];
+	assign i_r[11] = o_r[12];
+	assign i_r[12] = o_r[13] ^ i_w[6];
 	assign i_r[13] = o_r[14];
-	assign i_r[14] = o_r[15] ^ i_w[4];
+	assign i_r[14] = o_r[15] ^ i_w[7];
 	assign i_r[15] = o_r[16];
 	
 	// bottom part of RG

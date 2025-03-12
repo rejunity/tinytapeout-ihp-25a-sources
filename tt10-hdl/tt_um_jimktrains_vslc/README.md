@@ -7,7 +7,7 @@ A place for me to learn about ASIC design. Runs a stripped down version of
 the [VSCL](https://github.com/jimktrains/vscl)(Very Small Control Lanaguage)
 I'm working on for my microcontroller projects.
 
-The [architecture](./architecture.org) file has more details on what I plan
+The [architecture](./docs/src/04-architecture.md) file has more details on what I plan
 to implement.
 
 ---------------

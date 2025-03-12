@@ -68,6 +68,9 @@ with open(args.filename, 'rb') as f:
 
     if start_addr != 4:
         print(f".start {start_addr}")
+    else:
+        print("; starting address is the default");
+        print(f"; .start {start_addr}")
 
     last_non_noop = 3
     cur_addr = 3
@@ -108,4 +111,7 @@ with open(args.filename, 'rb') as f:
                 print(f"{best_opcode[0]} {reg}")
     if end_addr != last_non_noop:
         print(f".end {end_addr}")
+    else:
+        print("; ending address is the default")
+        print(f"; .end {end_addr}")
 

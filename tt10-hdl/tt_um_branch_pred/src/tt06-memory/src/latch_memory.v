@@ -83,7 +83,7 @@ module tt_um_MichaelBell_latch_mem #(
     assign wr_en_this_byte = wr_en && sel_byte;
 `else
     // Use an explicit and gate to minimize possibility of a glitch
-    (* keep *) sky130_fd_sc_hd__and2_1 lm_gate ( .A(wr_en), .B(sel_byte), .X(wr_en_this_byte) );
+    (* keep *) sg13g2_and2_1 lm_gate ( .A(wr_en), .B(sel_byte), .X(wr_en_this_byte) );
 `endif
     always @(wr_en_this_byte or uio_in)
         if (wr_en_this_byte)
@@ -120,7 +120,7 @@ module tt_um_MichaelBell_latch_mem #(
 `ifdef SIM
     bufif0 out_buf[7:0] (combined_out, selected_out, partition_sel_n);
 `else
-    sky130_fd_sc_hd__ebufn_4 lm_dt_out_buf[7:0] ( .A(selected_out), .Z(combined_out), .TE_B(partition_sel_n) );
+    sg13g2_ebufn_4 lm_dt_out_buf[7:0] ( .A(selected_out), .Z(combined_out), .TE_B(partition_sel_n) );
 `endif
   end
   endgenerate
@@ -128,7 +128,7 @@ module tt_um_MichaelBell_latch_mem #(
 `ifdef SIM
   buf final_buf[7:0] (uo_out, combined_out);
 `else
-  sky130_fd_sc_hd__clkbuf_4 lm_dt_final_buf[7:0] (.A(combined_out), .X(uo_out));
+  sg13g2_buf_4 lm_dt_final_buf[7:0] (.A(combined_out), .X(uo_out));
 `endif
 
 endmodule  // tt_um_latch_mem

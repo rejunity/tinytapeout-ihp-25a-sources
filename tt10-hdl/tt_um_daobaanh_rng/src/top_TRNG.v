@@ -34,7 +34,7 @@ module top_TRNG#
 		output led
 	);
 	
-	wire clk_50;
+	// wire clk_50;
 	
 	// for TRNG
 	wire reset;
@@ -49,12 +49,12 @@ module top_TRNG#
 	wire TX_Active;
 	wire TX_Done; 
 	
-	DCM_clk U0_fixed(
-				.clk_in(clk_sys),
-				.clk_50(clk_50));
+	// DCM_clk U0_fixed(
+	// 			.clk_in(clk_sys),
+	// 			.clk_50(clk_50));
 	
 	RG_based_TRNG #(NO_INVs) U1_TRNG(
-				.i_clk(clk_50),
+				.i_clk(clk_sys),
 				.i_rst(reset),
 				.i_en(i_en),
 				.o_RO(o_RO),
@@ -62,7 +62,7 @@ module top_TRNG#
 				.o_data(data));
 	
 	UART_interface #(g_CLKS_PER_BIT) U2_UART_interface(
-				.i_clk(clk_50),
+				.i_clk(clk_sys),
 				.i_RX_Serial(RX_Serial),
 				.o_RX_DV(RX_DV),
 				.o_RX_Byte(RX_Byte),
@@ -74,7 +74,7 @@ module top_TRNG#
 				.i_TX_Byte(TX_Byte));
 				
 	Main_controller U3_Main_controller(
-				.i_Clk(clk_50),
+				.i_Clk(clk_sys),
 				.led(led),
 				.reset(reset),
 				.data(data),

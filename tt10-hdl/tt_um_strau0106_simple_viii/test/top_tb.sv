@@ -8,8 +8,13 @@ module top_tb #(parameter DATA_BUS_WIDTH = 8, parameter ADDRESS_WIDTH = 16) (
   input logic clock, 
   input logic reset,
   
-  output [7:0] bus_data,
-  output [7:0] asd
+  `ifdef SCAN
+  input logic test, 
+  input logic scan_in, 
+  output logic scan_out,
+  `endif
+
+  output [7:0] reg_d
   );
   // Dump the signals to a VCD file. You can view it with gtkwave or surfer.
   initial begin
@@ -25,6 +30,7 @@ module top_tb #(parameter DATA_BUS_WIDTH = 8, parameter ADDRESS_WIDTH = 16) (
 
   logic [7:0] uio_out;
   logic [7:0] uio_in;
+  logic [7:0] ui_in;
 
   defparam sim_qspi_instance.INIT_FILE = `PROG_FILE;
 
@@ -36,19 +42,22 @@ module top_tb #(parameter DATA_BUS_WIDTH = 8, parameter ADDRESS_WIDTH = 16) (
     .qspi_ram_a_select(spi_ram_a_select),
     .qspi_ram_b_select(1'b1),
 
-    .debug_clk(clock),
-    .debug_addr(addr),  
-    .debug_data(asd)
+    .debug_clk(),
+    .debug_addr(),  
+    .debug_data()
 
   );
 
-  wire _unused;
   logic [24:0] addr = {24'b0, 1'b1};
 
-  assign {_unused, spi_ram_a_select, spi_data_in[3:2], 
-                    spi_clk_out, spi_data_in[1:0], spi_flash_select} = uio_out; // look for bugs
+  assign {scan_out, spi_ram_a_select, spi_data_in[3:2], 
+                    spi_clk_out, spi_data_in[1:0], spi_flash_select} = uio_out; 
 
-  assign uio_in = {2'b00, spi_data_out[3:2], 1'b0, spi_data_out[1:0], 1'b0}; // look for bugs
+  assign uio_in = {2'b00, spi_data_out[3:2], 1'b0, spi_data_out[1:0], 1'b0};
+
+  `ifdef SCAN  
+  assign ui_in = {test, scan_in, 6'b000000};
+  `endif
   
   //spi_data_out = {uio_in[5:4], uio_in[2:1]};
   
@@ -64,8 +73,9 @@ module top_tb #(parameter DATA_BUS_WIDTH = 8, parameter ADDRESS_WIDTH = 16) (
       .VPWR(VPWR),
       .VGND(VGND),
     `endif
-    .ui_in(),
-    .uo_out(bus_data),
+    
+    .ui_in(ui_in),
+    .uo_out(reg_d),
     .uio_out(uio_out),
     .uio_in(uio_in),
     .uio_oe(),
