@@ -71,8 +71,8 @@ module combcgate0(input rst_n, input A, input B, output wire Q);
    // A2 = (A | B) & Q
 
    wire A2;
-   sky130_fd_sc_hd__o21a_1 i1(Q, A & B, A2, rst_n);
-   sky130_fd_sc_hd__o21a_1 i2(A2, A, B, Q);
+   sky130_fd_sc_hd__o21a_1 i1(.X(Q), .A1(A & B), .A2(A2), .B1(rst_n));
+   sky130_fd_sc_hd__o21a_1 i2(.X(A2), .A1(A), .A2(B), .B1(Q));
 `endif
 endmodule
 
@@ -88,8 +88,8 @@ module combcgate1(input rst_n, input A, input B, output wire Q);
    // A1 = (A | B) & Q
 
    wire A1;
-   sky130_fd_sc_hd__a211o_1 i1(Q, A, B, A1, !rst_n);
-   sky130_fd_sc_hd__o21a_1 i2(A1, A, B, Q);
+   sky130_fd_sc_hd__a211o_1 i1(.X(Q), .A1(A), .A2(B), .B1(A1), .C1(!rst_n));
+   sky130_fd_sc_hd__o21a_1 i2(.X(A1), .A1(A), .A2(B), .B1(Q));
 `endif
 endmodule
 

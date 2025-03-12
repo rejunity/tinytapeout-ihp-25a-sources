@@ -1,4 +1,3 @@
-
 /*
 This file provides the mapping from the Wokwi modules to Verilog HDL.
 
@@ -7,6 +6,7 @@ It's only needed for Wokwi designs.
 
 `define default_netname none
 
+(* keep_hierarchy *)
 module buffer_cell (
     input wire in,
     output wire out
@@ -14,6 +14,7 @@ module buffer_cell (
     assign out = in;
 endmodule
 
+(* keep_hierarchy *)
 module and_cell (
     input wire a,
     input wire b,
@@ -23,6 +24,7 @@ module and_cell (
     assign out = a & b;
 endmodule
 
+(* keep_hierarchy *)
 module or_cell (
     input wire a,
     input wire b,
@@ -32,6 +34,7 @@ module or_cell (
     assign out = a | b;
 endmodule
 
+(* keep_hierarchy *)
 module xor_cell (
     input wire a,
     input wire b,
@@ -41,6 +44,7 @@ module xor_cell (
     assign out = a ^ b;
 endmodule
 
+(* keep_hierarchy *)
 module nand_cell (
     input wire a,
     input wire b,
@@ -50,6 +54,7 @@ module nand_cell (
     assign out = !(a&b);
 endmodule
 
+(* keep_hierarchy *)
 module not_cell (
     input wire in,
     output wire out
@@ -58,6 +63,7 @@ module not_cell (
     assign out = !in;
 endmodule
 
+(* keep_hierarchy *)
 module mux_cell (
     input wire a,
     input wire b,
@@ -68,6 +74,7 @@ module mux_cell (
     assign out = sel ? b : a;
 endmodule
 
+(* keep_hierarchy *)
 module dff_cell (
     input wire clk,
     input wire d,
@@ -81,23 +88,38 @@ module dff_cell (
 
 endmodule
 
+(* blackbox *)
+module sg13g2_sdfbbp_1 (
+    output wire Q,
+    output wire Q_N,
+    input wire D,
+    input wire SCD,
+    input wire SCE,
+    input wire RESET_B,
+    input wire SET_B,
+    input wire CLK
+    );
+endmodule
+
+(* keep_hierarchy *)
 module dffsr_cell (
     input wire clk,
     input wire d,
     input wire s,
     input wire r,
-    output reg q,
+    output wire q,
     output wire notq
     );
 
-    assign notq = !q;
+    sg13g2_sdfbbp_1 dffsr (
+        .D (d),
+        .SCD (0),
+        .SCE (0),
+        .RESET_B (!r),
+        .SET_B (!s),
+        .CLK (clk),
+        .Q (q),
+        .Q_N (notq)
+    );
 
-    always @(posedge clk or posedge s or posedge r) begin
-        if (r)
-            q <= 0;
-        else if (s)
-            q <= 1;
-        else
-            q <= d;
-    end
 endmodule
