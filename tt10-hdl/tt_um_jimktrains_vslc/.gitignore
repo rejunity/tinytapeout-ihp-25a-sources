@@ -3,7 +3,6 @@ src/_tt_fpga_top.v
 build
 gds*.png
 gds*.svg
-src/config.json
 .DS_Store
 .idea
 *.vcd
