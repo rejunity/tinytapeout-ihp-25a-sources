@@ -588,7 +588,6 @@ jobs:
           - tt_um_sushi_demo
           - tt_um_synth_simple_mm
           - tt_um_tappu_tobias1012
-          - tt_um_test_commit
           - tt_um_tiny_shader_mole99
           - tt_um_tinytapeout_logo_screensaver
           - tt_um_toivoh_demo_tt10
