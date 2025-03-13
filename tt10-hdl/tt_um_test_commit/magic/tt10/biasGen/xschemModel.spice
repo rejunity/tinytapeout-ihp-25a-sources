@@ -1,9 +1,0 @@
-* SPICE3 file created from ibias_10nA.ext - technology: sky130A
-
-X0 a_547_n1524# Vnbias Vpbias VSUBS sky130_fd_pr__nfet_01v8 ad=0.145 pd=1.58 as=0.145 ps=1.58 w=0.5 l=0.2
-X1 Vss Vnbias Vnbias VSUBS sky130_fd_pr__nfet_01v8 ad=0.145 pd=1.58 as=0.145 ps=1.58 w=0.5 l=0.2
-X2 Vpbias Vpbias Vdd M5/w_n129_n164# sky130_fd_pr__pfet_01v8 ad=0.145 pd=1.58 as=0.145 ps=1.58 w=0.5 l=0.35
-X3 Vnbias Vpbias Vdd M5/w_n129_n164# sky130_fd_pr__pfet_01v8 ad=0.145 pd=1.58 as=0.145 ps=1.58 w=0.5 l=0.35
-X4 a_492_n1612# Vpbias Vdd M5/w_n129_n164# sky130_fd_pr__pfet_01v8 ad=0.29 pd=2.58 as=0.29 ps=2.58 w=1 l=0.35
-X5 a_547_n1524# a_492_n1612# a_492_n1612# VSUBS sky130_fd_pr__nfet_01v8 ad=0.25 pd=2.5 as=0.29 ps=2.58 w=1 l=0.2
-X6 Vss a_492_n1612# a_547_n1524# VSUBS sky130_fd_pr__nfet_01v8 ad=0.29 pd=2.58 as=5m ps=2.01 w=1 l=1
