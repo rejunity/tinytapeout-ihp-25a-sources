@@ -328,6 +328,7 @@ jobs:
           - tt_um_MichaelBell_hd_8b10b
           - tt_um_MichaelBell_rle_vga
           - tt_um_michaelmcculloch_alu
+          - tt_um_micro_tiles_container
           - tt_um_mikegoelzer_7segmentbyte
           - tt_um_mroblesh
           - tt_um_multiplier_tt09
@@ -523,24 +524,34 @@ jobs:
         project:
           - tt_um_10_vga_crossyroad
           - tt_um_2048_vga_game
+          - tt_um_4_bit_ALU
+          - tt_um_aditya_patra
+          - tt_um_algofoogle_vga
           - tt_um_alphaonesoc
           - tt_um_asgerwenneb
           - tt_um_atomNPU
           - tt_um_bilal_trng
+          - tt_um_bitty
           - tt_um_branch_pred
+          - tt_um_brukstus_tdc_with_spi
           - tt_um_chip_rom
           - tt_um_DaDDS
           - tt_um_daobaanh_rng
           - tt_um_devmonk_ay8913
+          - tt_um_drum_goekce
           - tt_um_enjens
           - tt_um_factory_test
+          - tt_um_flummer_ltc
           - tt_um_gamepad_pmod_demo
           - tt_um_gcd_stephan
           - tt_um_gregac_tiny_nn
           - tt_um_gus16
+          - tt_um_gxrii_spi_sevenseg
           - tt_um_hpdl1414_uart_atudoroi
+          - tt_um_htfab_checkers
           - tt_um_huffman_coder
           - tt_um_i2c_regf
+          - tt_um_iitbbs
           - tt_um_jimktrains_vslc
           - tt_um_jp_cd101_saw
           - tt_um_jun1okamura_test0
@@ -560,28 +571,37 @@ jobs:
           - tt_um_multiplier_tt10
           - tt_um_nithishreddykvs
           - tt_um_obriensp_jtag
-          - tt_um_octa16
+          - tt_um_ole_moller_priority_encoder_to_7_segment_decoder
           - tt_um_project_tt10
+          - tt_um_Qwendu_spi_fpu
           - tt_um_reemashivva_fifo
           - tt_um_rejunity_ternary_dot
           - tt_um_rkarl_Spiral
+          - tt_um_rte_sine_synth
           - tt_um_save_buffer_hash_table
           - tt_um_schoeberl_wildcat
           - tt_um_space_invaders_game
           - tt_um_spacewar
+          - tt_um_spi_pwm_djuara
           - tt_um_strau0106_simple_viii
           - tt_um_Strider93
           - tt_um_sushi_demo
           - tt_um_synth_simple_mm
           - tt_um_tappu_tobias1012
+          - tt_um_test_commit
+          - tt_um_tiny_shader_mole99
           - tt_um_tinytapeout_logo_screensaver
           - tt_um_toivoh_demo_tt10
+          - tt_um_toniklippeo
           - tt_um_torurstrom_async_lock
           - tt_um_uart_bgdtanasa
           - tt_um_UartMain
+          - tt_um_ultra_tiny_cpu
           - tt_um_urish_simon
+          - tt_um_uwasic_dinogame
           - tt_um_vga_clock
           - tt_um_virantha_enigma
+          - tt_um_wokwi_422960078645704705
           - tt_um_wrapper
           - tt_um_xor_encryption
           - tt_um_z2a_rgb_mixer
