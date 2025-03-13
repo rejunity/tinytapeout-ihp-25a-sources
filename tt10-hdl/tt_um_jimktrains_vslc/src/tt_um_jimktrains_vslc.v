@@ -20,8 +20,8 @@ module tt_um_jimktrains_vslc (
   input  wire       rst_n    // reset_n - low to reset
 );
 
-  (* keep *)
-  my_logo logo();
+  // (* keep *)
+  // my_logo logo();
 
 tt_um_jimktrains_vslc_core core (
   ui_in,
