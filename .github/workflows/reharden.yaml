@@ -575,6 +575,7 @@ jobs:
           - tt_um_project_tt10
           - tt_um_Qwendu_spi_fpu
           - tt_um_reemashivva_fifo
+          - tt_um_rejunity_atari2600
           - tt_um_rejunity_ternary_dot
           - tt_um_rkarl_Spiral
           - tt_um_rte_sine_synth
