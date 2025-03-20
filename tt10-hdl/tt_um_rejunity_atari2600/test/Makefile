@@ -5,7 +5,7 @@
 SIM ?= icarus
 TOPLEVEL_LANG ?= verilog
 SRC_DIR = $(PWD)/../src
-PROJECT_SOURCES += tt_um_rejunity_atari2600.v atari2600.v vga_hvsync_generator.v qspi_flash.v
+PROJECT_SOURCES += tt_um_rejunity_atari2600.v atari2600.v vga_hvsync_generator.v qspi_flash.v gamepad_pmod.v
 PROJECT_SOURCES += 6502.v ALU.v TIA.v PIA.v
 PROJECT_SOURCES += palette_24bpp.v
 
@@ -33,9 +33,9 @@ VERILOG_SOURCES += $(PWD)/gate_level_netlist.v
 endif
 
 # Include the testbench sources:
-VERILOG_SOURCES += $(PWD)/tb.v
-# VERILOG_SOURCES += $(PWD)/qspi_rom_emu.v
+VERILOG_SOURCES += $(PWD)/qspi_rom_emu.v
 # VERILOG_SOURCES += $(PWD)/macro_rom_emu.v # external ROMs are not supported with IHP130
+VERILOG_SOURCES += $(PWD)/tb.v
 TOPLEVEL = tb
 
 # MODULE is the basename of the Python test file
